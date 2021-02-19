@@ -3,6 +3,11 @@
     <div class="col-8 cocktail-show">
       <img src="https://source.unsplash.com/480x360/?cocktail,drink" alt="cocktail">
       <h3 class='cocktail-title my-3'><%= @cocktail.name %></h3>
+      <div class='dose-content'>
+        <% @doses.each do |dose| %>
+        <p><%= dose.description %></p>
+        <% end %>
+      </div>
       <%= link_to 'Back to main', cocktails_path, class: 'btn btn-primary btn-xs'  %>
     </div>
   </div>
