@@ -1,12 +1,15 @@
 <div class="container">
-  <div class="class">
-    <div class="col-12">
-      <h1>Cocktail List</h1>
-    </div>
-    <div class="col-4">
-      <% @cocktails.each do |cocktail| %>
-        <p><%= link_to cocktail.name, cocktail_path(cocktail)%> </p>
-      <% end %>
-    </div>
+  <div class="page-title mt-3">
+    <h1>Cocktail List</h1>
+  </div>
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/600x600/?cocktail,drink)">
+        <h3><%= link_to cocktail.name, cocktail_path(cocktail) %> </h3>
+      </div>
+    <% end %>
+  </div>
+  <div class="add-button">
+    <%= link_to 'Add a cocktail', new_cocktail_path, class: 'btn btn-primary btn-xs mt-3' %>
   </div>
 </div>
