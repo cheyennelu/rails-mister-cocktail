@@ -1,14 +1,22 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-8 cocktail-show">
-      <img src="https://source.unsplash.com/480x360/?cocktail,drink" alt="cocktail">
+      <img src="https://source.unsplash.com/480x360/?cocktail,drink" alt="cocktail" class="cocktail-img rounded">
       <h3 class='cocktail-title my-3'><%= @cocktail.name %></h3>
-      <div class='dose-content'>
-        <% @doses.each do |dose| %>
-        <p><%= dose.description %></p>
+      <div class="dose-info">
+        <h5>Recipe list</h5>
+        <%= @cocktail.doses.each do |dose| %>
+          <p><%= dose.ingredient.name %> -- <%= dose.description %></p>
+        <% end %>
+        <%= render "doses/new", cocktail: @cocktail, dose: @dose %>
+      </div>
+      <div class="review-info">
+        <%= render "reviews/new", cocktail: @cocktail, review: @review %>
+        <%= @cocktail.reviews.each do |review| %>
+        <p><%= review.content %> -- <%= review.rating %>⭐️ </p>
         <% end %>
       </div>
-      <%= link_to 'Back to main', cocktails_path, class: 'btn btn-primary btn-xs'  %>
+      <%= link_to 'Back to main', root_path, class: 'btn btn-primary btn-xs my-3'  %>
     </div>
   </div>
 </div>

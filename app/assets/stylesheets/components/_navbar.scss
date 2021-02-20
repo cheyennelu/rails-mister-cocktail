@@ -8,6 +8,18 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+  object-fit: cover;
+  height: 50px;
+  border-radius: 50%;
 }
 
+.nav-item a {
+  color: #545454;
+  transition: 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    color: #a70404;
+  }
+}

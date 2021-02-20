@@ -1,0 +1,7 @@
+<h4 class='review-form mt-3'>Add a review!</h4>
+<p>Tell us how much you like <%= cocktail.name %>! The more stars the better!</p>
+<%= simple_form_for [cocktail, review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.button :submit, class: 'btn btn-primary btn-xs' %>
+<% end %>
