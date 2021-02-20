@@ -3,18 +3,19 @@
     <div class="col-8 cocktail-show">
       <img src="https://source.unsplash.com/480x360/?cocktail,drink" alt="cocktail" class="cocktail-img rounded">
       <h3 class='cocktail-title my-3'><%= @cocktail.name %></h3>
-      <div class="dose-info">
+      <div class="info-container">
         <h5>Recipe list</h5>
         <%= @cocktail.doses.each do |dose| %>
           <p><%= dose.ingredient.name %> -- <%= dose.description %></p>
         <% end %>
         <%= render "doses/new", cocktail: @cocktail, dose: @dose %>
       </div>
-      <div class="review-info">
-        <%= render "reviews/new", cocktail: @cocktail, review: @review %>
+      <div class="info-container">
+        <h5>Reviews</h5>
         <%= @cocktail.reviews.each do |review| %>
-        <p><%= review.content %> -- <%= review.rating %>⭐️ </p>
+          <p><%= review.content %> -- <%= review.rating %>⭐️ </p>
         <% end %>
+        <%= render "reviews/new", cocktail: @cocktail, review: @review %>
       </div>
       <%= link_to 'Back to main', root_path, class: 'btn btn-primary btn-xs my-3'  %>
     </div>
