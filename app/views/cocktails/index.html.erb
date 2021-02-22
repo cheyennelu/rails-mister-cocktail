@@ -4,7 +4,7 @@
   </div>
   <div class="cards" data-aos="zoom-in">
     <% @cocktails.each do |cocktail| %>
-      <div class="card-category" data-aos="flip-left" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/600x600/?cocktail,drink)">
+      <div class="card-category" data-aos="flip-left", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(cocktail.photo.key, :gravity=>"auto", :crop=>"thumb") %>);" >
         <h3><%= link_to cocktail.name, cocktail_path(cocktail) %> </h3>
       </div>
     <% end %>

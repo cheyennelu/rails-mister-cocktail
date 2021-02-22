@@ -1,17 +1,16 @@
 require 'json'
 require 'open-uri'
 
+puts "let's seed..."
+
+Cocktail.destroy_all
+Ingredient.destroy_all
+
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 raw_json = open(url).read
 json = JSON.parse(raw_json)
 
 ing_array = json['drinks'].first(10)
-
-puts "let's seed..."
-
-Ingredient.destroy_all
-Cocktail.destroy_all
-
 ing_array.each do |hash|
   ingredient = hash['strIngredient1']
   Ingredient.create(name: ingredient)
@@ -22,12 +21,12 @@ end
   raw_json = open(url).read
   json = JSON.parse(raw_json)
 
-  ing_array = json['drinks'].first(10)
+  drink_name = json['drinks'].first['strDrink']
+  photo_url = json['drinks'].first['strDrinkThumb']
+  file = URI.open(photo_url)
+  cocktail = Cocktail.create!(name: drink_name)
+  cocktail.photo.attach(io: file, filename: "#{cocktail.name}", content_type: "image/jpg")
 
-  ing_array.each do |hash|
-    drink = hash['strDrink']
-    Cocktail.create!(name: drink)
-  end
 end
 
 puts "all done!"

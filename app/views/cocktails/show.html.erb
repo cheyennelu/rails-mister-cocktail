@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-8 cocktail-show" data-aos="fade-up">
-      <img src="https://source.unsplash.com/480x360/?cocktail,drink" alt="cocktail" class="cocktail-img">
       <h3 class='cocktail-title my-3'><%= @cocktail.name %></h3>
+      <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill, class: "cocktail-img" %>
       <div class="info-container">
         <h5>Recipe list</h5>
         <% @cocktail.doses.each do |dose| %>
