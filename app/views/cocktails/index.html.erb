@@ -2,9 +2,9 @@
   <div class="page-title text-align-center my-3">
     <h2>What's your poison?</h2>
   </div>
-  <div class="cards">
+  <div class="cards" data-aos="zoom-in">
     <% @cocktails.each do |cocktail| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/600x600/?cocktail,drink)">
+      <div class="card-category" data-aos="flip-left" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/600x600/?cocktail,drink)">
         <h3><%= link_to cocktail.name, cocktail_path(cocktail) %> </h3>
       </div>
     <% end %>
